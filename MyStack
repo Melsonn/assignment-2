@@ -1,0 +1,57 @@
+package com.company;
+
+public class MyStack<T extends Comparable<T>> {
+    MyLinkedList<T> stack = new MyLinkedList<T>();
+
+    private class StackNode<T>{
+        T data;
+        StackNode<T> next;
+
+        StackNode() {
+            this.data = data;
+        }
+    }
+
+    StackNode root;
+
+    MyStack(){
+        this.root = null;
+    }
+
+    public boolean isEmpty(){
+        if(root == null){
+            return true;
+        }
+        return false;
+    }
+
+    public T pop(){
+        StackNode temp = root;
+        root = root.next;
+        return (T)temp;
+    }
+
+    public T push(T item){
+        StackNode temp = new StackNode();
+        temp.data = item;
+        temp.next = root;
+        root = temp;
+        return (T)root;
+    }
+
+    public T peek(){
+        return (T)root.data;
+    }
+
+
+    public int size(){
+        int cnt = 0;
+        StackNode temp = root;
+
+        while(temp != null){
+            cnt++;
+            temp = temp.next;
+        };
+        return cnt;
+    }
+}
